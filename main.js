@@ -104,12 +104,14 @@ function flipCard(){
 function checkGreaterCard(player1Card, player2Card){
     //first off is what happens in a tie/war
     if (player1CurrentCard[0].Value === player2CurrentCard[0].Value){
-        //how to show all four cards pulled? gonna keep it simple by only having war pull two additional cards
+        //gonna keep it simple by only having war pull two additional cards
         pickRandomCard();
         //splice new random card out of stack and into currentCard twice, once for each player
-        player1Stack.splice
+        player1CurrentCard.splice(pickRandomCard())
+        player2CurrentCard.splice(pickRandomCard())
     }
-    else if (player1CurrentCard[0].Value > player2CurrentCard[0].Value) {
+    else 
+    if (player1CurrentCard[0].Value > player2CurrentCard[0].Value) {
         console.log('player 1 wins');
     //pushes player1CurrentCard && player2CurrentCard in player1Stack
         player2Stack.splice(player2CurrentCard[1], 1);
@@ -123,6 +125,7 @@ function checkGreaterCard(player1Card, player2Card){
         //checkWin();
     }
 }
+
 //checkGreaterCard();
 
 // function checkWin(){ //invoke every time cards are pushed to a stack
@@ -146,9 +149,7 @@ function checkGreaterCard(player1Card, player2Card){
 
 function render() {
 //use render to flip cards over 
-//use to add won cards to stack?
-//use to initialize game? to restart
-player2
+//use to initialize game? 
 }
 render();
 
@@ -165,6 +166,9 @@ function playGame(){
     //these 2 lines take a random card twice and push it from the stack to the currentCard
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
+    console.log(player1CurrentCard);
+    console.log(player2CurrentCard);
+    // checkGreaterCard();
     //dom announces who won the hand, display goes away when card is clicked again
     //move onto next move below only when the user clicks the card again
     //(click event for click on card image here)
