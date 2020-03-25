@@ -70,7 +70,6 @@ function createDeck() {
     return deck;
 }
 
-
 function splitDeck() {
     let i = 0;
     while (i < 26){
@@ -114,13 +113,14 @@ function checkGreaterCard(player1Card, player2Card){
         console.log('player 1 wins');
     //pushes player1CurrentCard && player2CurrentCard in player1Stack
         player2Stack.splice(player2CurrentCard[1], 1);
-        player1Stack.push(player2CurrentCard[0])//now invoke checkWin
+        player1Stack.push(player2CurrentCard[0])
+        //checkWin();
     } else if (player1CurrentCard[0].Value < player2CurrentCard[0].Value) {
     //pushes player2Currentcard && player1CurrentCard in player2Stack
         console.log('player 2 wins');
         player1Stack.splice(player1CurrentCard[1], 1);
         player2Stack.push(player1Currentcard[0]);
-        //now invoke checkWin
+        //checkWin();
     }
 }
 //checkGreaterCard();
@@ -136,13 +136,13 @@ function checkGreaterCard(player1Card, player2Card){
 // }
 // checkWin();
 
-function checkWin() {
-    //checks to see if either stack has reached 52 cards yet, if it does use the dom to display who won
-    //if no win, nothing happens 
-    if (player1Stack === 52 || player2Stack === 52) {
-        console.log(`${ }` + "won! game over");
-    }
-}
+// function checkWin() {
+//     //checks to see if either stack has reached 52 cards yet, if it does use the dom to display who won
+//     //if no win, nothing happens 
+//     if (player1Stack === 52 || player2Stack === 52) {
+//         console.log(`${ }` + "won! game over");
+//     }
+// }
 
 function render() {
 //use render to flip cards over 
@@ -154,20 +154,20 @@ render();
 
 
 function reset() {
-//clears hands and stacks/ or refreshes page? by splicing the contents of stack array back to globalDeck?
 location.reload();
 }
 
 
 function playGame(){
-
-    //when click on plyr1 card stack happens- invoke function for picking a random card - this skips needing to shuffle--how do i connect click event here
-    // createDeck();
+    createDeck();
     //console.log(globalDeck);
     splitDeck();
     //these 2 lines take a random card twice and push it from the stack to the currentCard
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
-    //invoke checkGreaterCard here
+    //dom announces who won the hand, display goes away when card is clicked again
+    //move onto next move below only when the user clicks the card again
+    //(click event for click on card image here)
+    //checkGreaterCard(player1Currentcard, player2CurrentCard);
 }
 
