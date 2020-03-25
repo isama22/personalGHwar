@@ -1,0 +1,65 @@
+body {
+    text-align: center;
+    background-image: url("https://i.imgur.com/BTJdpsn.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: grid;
+    grid-template-columns: 4fr;
+    grid-template-rows: 4fr;
+    height: 100vh;
+    margin: 70px;
+    background-color: red;
+
+}
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: darkcyan;
+    height: 140vh;
+    
+}
+
+h1 {
+color: darkred;
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+}
+/* trying to have the nested div boxes show up */
+/* section div {
+   background-color: white;
+   
+} */
+#player1 {
+background-color: yellow;
+display: flex;
+height: 30vh;
+width: 20vh;
+flex-direction: row;
+/* margin-left: 580px;
+margin-bottom: 300px; */
+margin: auto;
+margin-bottom: 300px;
+
+}
+
+#player2 {
+background-color: yellow;
+display: flex;
+height: 30vh;
+width: 20vh;
+flex-direction: row;
+/* margin-left: 580px;
+margin-bottom: 60px; */
+margin: auto;
+
+}
+
+button {
+color: red;
+display: flex;
+flex-direction: row;
+margin: auto;
+margin-top: 40px;
+margin-bottom: 40px;
+}
+
