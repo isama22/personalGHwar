@@ -1,28 +1,3 @@
-//constants
-//--each player has 26 cards every time the game begins
-
-//--array of cards, 52 cards holding value and name (value: 10, face 'd07;)
-    //ok have to use a compare cards function to compare card values instead of storing them in the array
-
-// const cards = ["dA", "hA", "cA", "sA", "dK", "hK", "cK", "sK", "dQ", "hQ", "cQ", "sQ", "dJ", "hJ", "cJ", "sJ", "d10", "h10", "c10", "s10", "d09", "h09", "c09", "s09", "d08", "h08", "c08", "s08", "d07", "h07", "c07", "s07", "d06", "h06", "c06", "s06", "d05", "h05", "c05", "s05", "d04", "h04", "c04", "s04", "d03", "h03", "c03", "s03", "d02", "h02", "c02", "s02"];
-// const cardValues = {
-// 	14: ["dA", "hA", "cA", "sA"],
-// 	13: ["dK", "hK", "cK", "sK"], 
-// 	12: ["dQ", "hQ", "cQ", "sQ"], 
-// 	11: ["dJ", "hJ", "cJ", "sJ"], 
-// 	10: ["d10", "h10", "c10", "s10"],
-// 	9: ["d09", "h09", "c09", "s09"],
-// 	8: ["d08", "h08", "c08", "s08"],
-// 	7: ["d07", "h07", "c07", "s07"],
-// 	6: ["d06", "h06", "c06", "s06"],
-// 	5: ["d05", "h05", "c05", "s05"],
-// 	4: ["d04", "h04", "c04", "s04"],
-// 	3: ["d03", "h03", "c03", "s03"],
-// 	2: ["d02", "h02", "c02", "s02"]
-// };
-//push key to v
-// let shuffledCardDeck = [];
-//randomizer to pick ^
 
 //constants -------------------------------------------------------
 const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
@@ -112,12 +87,6 @@ function startGame(){
 
 
 function checkGreaterCard(){
-    // console.log(player1CurrentCard);
-    // let player1Card = [0];
-    // let player2Card = [0];
-
-    //console.log(player1CurrentCard);
-    
     if (player1CurrentCard[player1CurrentCard.length -1][0].Value === player2CurrentCard[player2CurrentCard.length -1][0].Value){
         player1CurrentCard.push(pickRandomCard(player1Stack));
         player2CurrentCard.push(pickRandomCard(player2Stack));
@@ -132,11 +101,9 @@ function checkGreaterCard(){
         
     }
     else if (player1CurrentCard[player1CurrentCard.length -1][0].Value > player2CurrentCard[player2CurrentCard.length -1][0].Value) {
-        //console.log(player1Card[0][0].Value);
-        //console.log(player2CurrentCard);
+        //pushes both cards into p1 stack
         for (i = 0; i < player1CurrentCard.length; i++){
             player2Stack.splice(player2CurrentCard[i][1], 1);
-            
             player1Stack.push(player2CurrentCard[i][0])
         }
         console.log('player 1 wins this hand');
@@ -145,23 +112,15 @@ function checkGreaterCard(){
         para.appendChild(node);
         const element = document.getElementById("div2");
         element.appendChild(para);
-        //element.removeChild(element.childNodes[0]);
-        while (div2.firstChild){
+            while (div2.firstChild){
             div2.removeChild(div2.firstChild);
         };
-        div2.forEach(element.appendChild(para));
-//pushes player1CurrentCard && player2CurrentCard in player1Stack
-            // for (i = 0; i < player1CurrentCard.length; i++){
-            //     player2Stack.splice(player2CurrentCard[i][1], 1);
-                
-            //     player1Stack.push(player2CurrentCard[i][0])
-            // }
-            //checkWin();
-    } else {
+        para(element.appendChild(para));
+            checkWin();
+    } else{
     //pushes player2Currentcard && player1CurrentCard in player2Stack
     for (i = 0; i < player1CurrentCard.length; i++){
         player1Stack.splice(player1CurrentCard[i][1], 1);
-        
         player2Stack.push(player1CurrentCard[i][0])
     }
         console.log('player 2 wins this hand');
@@ -170,18 +129,12 @@ function checkGreaterCard(){
         para.appendChild(node);
         const element = document.getElementById("div2");
         element.appendChild(para);
-
-        while (div2.firstChild) {
+            while (div2.firstChild) {
             div2.removeChild(div2.firstChild);
         };
-        div2.foreach(element.appendChild(para));
-        
-        // for (i = 0; i < player1CurrentCard.length; i++){
-        //     player1Stack.splice(player1CurrentCard[i][1], 1);
-            
-        //     player2Stack.push(player1CurrentCard[i][0])
-        // }
-        //checkWin();
+        para(element.appendChild(para));
+        //para.appendChild(node);
+        checkWin();
         
     }
 }
@@ -197,6 +150,11 @@ function checkWin(){ //invoke every time cards are pushed to a stack
         para.appendChild(node);
         const element = document.getElementById("div1");
         element.appendChild(para);
+        // while (div2.firstChild){
+        //     div2.removeChild(div2.firstChild);
+        // };
+        // div2.forEach(element.appendChild(para));
+
         document.getElementById("player2").removeEventListener("click", playGame)
         //element.removeChild(element.childNodes[0]);
      }
@@ -207,21 +165,29 @@ function checkWin(){ //invoke every time cards are pushed to a stack
         para.appendChild(node);
         const element = document.getElementById("div1");
         element.appendChild(para);
+        // while (div2.firstChild){
+        //     div2.removeChild(div2.firstChild);
+        //     div2.forEach(element.appendChild(para));
+        // };
+        
         document.getElementById("player2").removeEventListener("click", playGame)
         //element.removeChild(element.childNodes[0]);
     } 
     else if (player1Stack.length !== 52 && player2Stack.length !== 52 ){
         console.log('draw another card');
-        const para = document.createElement("p");
-        const node = document.createTextNode('draw another card');
-        para.appendChild(node);
-        const element = document.getElementById("div1");
-        element.appendChild(para);
-        element.removeChild(element.childNodes[0]);
+        // const para = document.createElement("p");
+        // const node = document.createTextNode('draw another card');
+        // para.appendChild(node);
+        // const element = document.getElementById("div1");
+        // element.appendChild(para);
+        //     while (div2.firstChild){
+        //     div2.removeChild(div2.firstChild);
+        // };
+        // para.appendChild(node);
+        // para(element.appendChild(para));
+        // element.removeChild(element.childNodes[0]);
      }
     }
-
-
 
 function render() {
 //use render to flip cards over 
@@ -229,17 +195,10 @@ function render() {
 }
 render();
 
-function flipCard(){
-    //click event listeners trigger 2 random cards to be selected from player stacks which invoke a flipcard to show it in the html and the checkgreatercard acts on the selected cards
-
-    //random generator to flip one card image over for each player at once
-    //use getElementById to grab player 1 and player2's current card with a randomizer and flip an image from my cards.css folder 
-    // }  
-
+function flipCard(){ 
+    //pickRandomCard will use flipcard to pull the correlated card image? from my css
+//flipcard invokes play for rest of game?
 }
-//seperate start game function/ disable start listener at end of this
-
-//flipcard invokes play for rest of game  
 
 function playGame(){
     //createDeck();

@@ -1,7 +1,7 @@
 body {
     text-align: center;
     background-image: url("https://i.imgur.com/BTJdpsn.jpg");
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: 100%;
     display: grid;
     grid-template-columns: 4fr;
@@ -15,7 +15,7 @@ section {
     display: flex;
     flex-direction: column;
     background-color: darkcyan;
-    height: 160vh;
+    height: 170vh;
     
 }
 
@@ -54,14 +54,33 @@ margin: auto;
 margin-top: 50px;
 }
 
-/* #div1{
-background-color: white;
+#p1aside {
+font-family: Arial, Helvetica, sans-serif;
+display: flex;
+justify-content: left;
+background-color: aliceblue;
+width: 50px;
+height: 35px;
+margin-bottom: 35px;
+}
+#p2aside{
+font-family: Arial, Helvetica, sans-serif;
+display: flex;
+justify-content: left;
+background-color: aliceblue;
+width: 50px;
+height: 35px;
+}
+#div1{
+font-family: Arial, Helvetica, sans-serif;
+color: darkred;
 }
 
 #div2 {
-background-color: pink;
+font-family: Arial, Helvetica, sans-serif;
+color: darkred;
 
-} */
+}
 button {
 color: red;
 display: flex;
