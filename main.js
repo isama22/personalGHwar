@@ -41,6 +41,7 @@ let win = player1Stack === 52 || player2Stack === 52;
 //variables -----------------------------------------------
 let player1CurrentCard = [];
 let player2CurrentCard = [];
+// console.log('player1CurrentCard');
 
 
 //cached------------------------------------------------------------------------
@@ -91,7 +92,8 @@ function pickRandomCard(globalDeck) {
     render();
     return array;
 }
-console.log(pickRandomCard(globalDeck));
+//console.log(pickRandomCard(globalDeck));
+
 
 function flipCard(){
     //click event listeners trigger 2 random cards to be selected from player stacks which invoke a flipcard to show it in the html and the checkgreatercard acts on the selected cards
@@ -99,29 +101,41 @@ function flipCard(){
     //random generator to flip one card image over for each player at once
     //use getElementById to grab player 1 and player2's current card with a randomizer and flip an image from my cards.css folder 
     // }  
+
 }
 
-function checkGreaterCard(player1Card, player2Card){
+function checkGreaterCard(){
+    // console.log(player1CurrentCard);
+    // let player1Card = [0];
+    // let player2Card = [0];
+
+    //console.log(player1Card[0][0].Value, player2Card[0][0].Value);
+    
+
     //first off is what happens in a tie/war
-    if (player1CurrentCard[0].Value === player2CurrentCard[0].Value){
-        //gonna keep it simple by only having war pull two additional cards
-        pickRandomCard();
-        //splice new random card out of stack and into currentCard twice, once for each player
-        player1CurrentCard.splice(pickRandomCard())
-        player2CurrentCard.splice(pickRandomCard())
-    }
-    else 
-    if (player1CurrentCard[0].Value > player2CurrentCard[0].Value) {
-        console.log('player 1 wins');
+    // if (player1CurrentCard[0].Value === player2CurrentCard[0].Value){
+    //     //gonna keep it simple by only having war pull two additional cards
+    //     pickRandomCard();
+    //     //splice new random card out of stack and into currentCard twice, once for each player
+    //     player1CurrentCard.splice(pickRandomCard(player1Stack))
+    //     player2CurrentCard.splice(pickRandomCard(player2Stack))
+    // }
+    // else 
+    // console.log(player1CurrentCard[0][0].Value);
+    if (player1CurrentCard[0][0].Value > player2CurrentCard[0][0].Value) {
+        //console.log(player1Card[0][0].Value);
+        
     //pushes player1CurrentCard && player2CurrentCard in player1Stack
         player2Stack.splice(player2CurrentCard[1], 1);
-        player1Stack.push(player2CurrentCard[0])
+        let p1= player1Stack.push(player2CurrentCard[0])
+        // console.log(p1);
         //checkWin();
-    } else if (player1CurrentCard[0].Value < player2CurrentCard[0].Value) {
+        console.log('p1wins')
+    } else {
     //pushes player2Currentcard && player1CurrentCard in player2Stack
         console.log('player 2 wins');
         player1Stack.splice(player1CurrentCard[1], 1);
-        player2Stack.push(player1Currentcard[0]);
+        player2Stack.push(player1CurrentCard[0]);
         //checkWin();
     }
 }
@@ -158,6 +172,8 @@ function reset() {
 location.reload();
 }
 
+//seperate start game function/ disable start listener at end of this
+//flipcard invokes play for rest of game  
 
 function playGame(){
     createDeck();
@@ -166,12 +182,14 @@ function playGame(){
     //these 2 lines take a random card twice and push it from the stack to the currentCard
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
-    console.log(player1CurrentCard);
-    console.log(player2CurrentCard);
-    // checkGreaterCard();
+    console.log('player1hand', player1CurrentCard[0][0]);
+    console.log('player2hand', player2CurrentCard[0][0]);
+    checkGreaterCard(player1CurrentCard, player2CurrentCard);
+    //generate next turn function/ disable start button event listener at the end of the function. 
+
     //dom announces who won the hand, display goes away when card is clicked again
     //move onto next move below only when the user clicks the card again
     //(click event for click on card image here)
-    //checkGreaterCard(player1Currentcard, player2CurrentCard);
+    //checkGreaterCard();
 }
 
