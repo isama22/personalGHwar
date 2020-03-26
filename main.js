@@ -140,7 +140,7 @@ function checkGreaterCard(){
         // let p1= player1Stack.push(player2CurrentCard[0][0])
         // console.log(p1);
         //checkWin();
-        console.log('p1wins')
+        console.log('player 1 wins')
         // if (player1CurrentCard.length > 1 && player2CurrentCard.length > 1){
             for (i = 0; i < player1CurrentCard.length; i++){
                 player2Stack.splice(player2CurrentCard[i][1], 1);
@@ -167,10 +167,10 @@ function checkWin(){ //invoke every time cards are pushed to a stack
     //how to check the contents of an array?
     if (player1Stack === 52) {
         //template literals to use winning players name 
-        console.log('p1 wins');
+        console.log('p1 wins game!');
     } else if (player2Stack === 52) {
-        console.log('p2 wins');
-    } else if (player1Stack && player2Stack !== 52 ){
+        console.log('p2 wins game!');
+    } else if (player1Stack !== 52 && player2Stack !== 52 ){
         console.log('draw another card');
     }
 }
