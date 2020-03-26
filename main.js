@@ -27,6 +27,7 @@
 //constants -------------------------------------------------------
 const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
+//let values = [2, 2, 2, 2, 2, 2, 2 ,2 , 2, 2, 2, 2, 3];
 const globalDeck = createDeck();
   
 let playerOne = null;
@@ -101,7 +102,7 @@ function startGame(){
     player2CurrentCard.push(pickRandomCard(player2Stack));
     console.log('player1hand', player1CurrentCard[0][0]);
     console.log('player2hand', player2CurrentCard[0][0]);
-    checkGreaterCard(player1CurrentCard, player2CurrentCard);
+    checkGreaterCard();
     //disable start button
     document.getElementById("startButton").removeEventListener("click", startGame);
 }
@@ -113,33 +114,50 @@ function checkGreaterCard(){
     // let player1Card = [0];
     // let player2Card = [0];
 
-    //console.log(player1Card[0][0].Value, player2Card[0][0].Value);
+    //console.log(player1CurrentCard);
     
 
     //first off is what happens in a tie/war
-    // if (player1CurrentCard[0].Value === player2CurrentCard[0].Value){
-    //     //gonna keep it simple by only having war pull two additional cards
-    //     pickRandomCard();
-    //     //splice new random card out of stack and into currentCard twice, once for each player
-    //     player1CurrentCard.splice(pickRandomCard(player1Stack))
-    //     player2CurrentCard.splice(pickRandomCard(player2Stack))
-    // }
-    // else 
-    // console.log(player1CurrentCard[0][0].Value);
-    if (player1CurrentCard[0][0].Value > player2CurrentCard[0][0].Value) {
-        //console.log(player1Card[0][0].Value);
+    if (player1CurrentCard[player1CurrentCard.length -1][0].Value === player2CurrentCard[player2CurrentCard.length -1][0].Value){
+        player1CurrentCard.push(pickRandomCard(player1Stack));
+        player2CurrentCard.push(pickRandomCard(player2Stack));
+        player1CurrentCard.push(pickRandomCard(player1Stack));
+        player2CurrentCard.push(pickRandomCard(player2Stack));
+        //gonna keep it simple by only having war pull two additional cards
+      
+        //splice new random card out of stack and into currentCard twice, once for each player
+        // player1CurrentCard.splice(pickRandomCard(player1Stack))
+        // player2CurrentCard.splice(pickRandomCard(player2Stack))
+        console.log('tie');
+        checkGreaterCard();
         
+    }
+    else if (player1CurrentCard[player1CurrentCard.length -1][0].Value > player2CurrentCard[player2CurrentCard.length -1][0].Value) {
+        //console.log(player1Card[0][0].Value);
+        console.log(player2CurrentCard);
     //pushes player1CurrentCard && player2CurrentCard in player1Stack
-        player2Stack.splice(player2CurrentCard[1], 1);
-        let p1= player1Stack.push(player2CurrentCard[0])
+        // player2Stack.splice(player2CurrentCard[0][1], 1);
+        // let p1= player1Stack.push(player2CurrentCard[0][0])
         // console.log(p1);
         //checkWin();
         console.log('p1wins')
+        // if (player1CurrentCard.length > 1 && player2CurrentCard.length > 1){
+            for (i = 0; i < player1CurrentCard.length; i++){
+                player2Stack.splice(player2CurrentCard[i][1], 1);
+                
+                player1Stack.push(player2CurrentCard[i][0])
+            }
+    // }
     } else {
     //pushes player2Currentcard && player1CurrentCard in player2Stack
         console.log('player 2 wins');
-        player1Stack.splice(player1CurrentCard[1], 1);
-        player2Stack.push(player1CurrentCard[0]);
+        // player1Stack.splice(player1CurrentCard[0][1], 1);
+        // player2Stack.push(player1CurrentCard[0][0]);
+        for (i = 0; i < player1CurrentCard.length; i++){
+            player1Stack.splice(player1CurrentCard[i][1], 1);
+            
+            player2Stack.push(player1CurrentCard[i][0])
+        }
         //checkWin();
     }
 }
@@ -181,6 +199,8 @@ function playGame(){
     //console.log(globalDeck);
     //splitDeck();
     //these 2 lines take a random card twice and push it from the stack to the currentCard
+    player1CurrentCard = [];
+    player2CurrentCard = [];
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
     console.log('player1hand', player1CurrentCard[0][0]);
