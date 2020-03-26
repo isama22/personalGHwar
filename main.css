@@ -15,7 +15,7 @@ section {
     display: flex;
     flex-direction: column;
     background-color: darkcyan;
-    height: 140vh;
+    height: 160vh;
     
 }
 
@@ -51,9 +51,17 @@ flex-direction: row;
 /* margin-left: 580px;
 margin-bottom: 60px; */
 margin: auto;
-
+margin-top: 50px;
 }
 
+/* #div1{
+background-color: white;
+}
+
+#div2 {
+background-color: pink;
+
+} */
 button {
 color: red;
 display: flex;
