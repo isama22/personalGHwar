@@ -53,7 +53,7 @@ let player2 = document.getElementById('player2');
 startButton.addEventListener("click", startGame);
     
 
-player2.addEventListener("click", pickRandomCard);
+player2.addEventListener("click", playGame);
     
 
 resetButton.addEventListener("click", reset);
@@ -94,15 +94,19 @@ function pickRandomCard(globalDeck) {
 }
 //console.log(pickRandomCard(globalDeck));
 
-
-function flipCard(){
-    //click event listeners trigger 2 random cards to be selected from player stacks which invoke a flipcard to show it in the html and the checkgreatercard acts on the selected cards
-
-    //random generator to flip one card image over for each player at once
-    //use getElementById to grab player 1 and player2's current card with a randomizer and flip an image from my cards.css folder 
-    // }  
-
+function startGame(){
+    createDeck();
+    splitDeck();
+    player1CurrentCard.push(pickRandomCard(player1Stack));
+    player2CurrentCard.push(pickRandomCard(player2Stack));
+    console.log('player1hand', player1CurrentCard[0][0]);
+    console.log('player2hand', player2CurrentCard[0][0]);
+    checkGreaterCard(player1CurrentCard, player2CurrentCard);
+    //disable start button
+    document.getElementById("startButton").removeEventListener("click", startGame);
 }
+
+
 
 function checkGreaterCard(){
     // console.log(player1CurrentCard);
@@ -140,7 +144,6 @@ function checkGreaterCard(){
     }
 }
 
-//checkGreaterCard();
 
 function checkWin(){ //invoke every time cards are pushed to a stack
     //how to check the contents of an array?
@@ -153,15 +156,7 @@ function checkWin(){ //invoke every time cards are pushed to a stack
         console.log('draw another card');
     }
 }
-// checkWin();
 
-// function checkWin() {
-//     //checks to see if either stack has reached 52 cards yet, if it does use the dom to display who won
-//     //if no win, nothing happens 
-//     if (player1Stack === 52 || player2Stack === 52) {
-//         console.log(`${ }` + "won! game over");
-//     }
-// }
 
 function render() {
 //use render to flip cards over 
@@ -169,24 +164,16 @@ function render() {
 }
 render();
 
+function flipCard(){
+    //click event listeners trigger 2 random cards to be selected from player stacks which invoke a flipcard to show it in the html and the checkgreatercard acts on the selected cards
 
-function reset() {
-location.reload();
+    //random generator to flip one card image over for each player at once
+    //use getElementById to grab player 1 and player2's current card with a randomizer and flip an image from my cards.css folder 
+    // }  
+
 }
-
 //seperate start game function/ disable start listener at end of this
 
-function startGame(){
-    createDeck();
-    splitDeck();
-    player1CurrentCard.push(pickRandomCard(player1Stack));
-    player2CurrentCard.push(pickRandomCard(player2Stack));
-    console.log('player1hand', player1CurrentCard[0][0]);
-    console.log('player2hand', player2CurrentCard[0][0]);
-    checkGreaterCard(player1CurrentCard, player2CurrentCard);
-    //disable start button
-    document.getElementById("startButton").removeEventListener("click", startGame);
-}
 //flipcard invokes play for rest of game  
 
 function playGame(){
@@ -208,3 +195,6 @@ function playGame(){
     //checkGreaterCard();
 }
 
+function reset() {
+location.reload();
+}
