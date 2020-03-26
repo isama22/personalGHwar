@@ -116,14 +116,11 @@ function checkGreaterCard(){
 
     //console.log(player1CurrentCard);
     
-
-    //first off is what happens in a tie/war
     if (player1CurrentCard[player1CurrentCard.length -1][0].Value === player2CurrentCard[player2CurrentCard.length -1][0].Value){
         player1CurrentCard.push(pickRandomCard(player1Stack));
         player2CurrentCard.push(pickRandomCard(player2Stack));
         player1CurrentCard.push(pickRandomCard(player1Stack));
         player2CurrentCard.push(pickRandomCard(player2Stack));
-        //gonna keep it simple by only having war pull two additional cards
       
         //splice new random card out of stack and into currentCard twice, once for each player
         // player1CurrentCard.splice(pickRandomCard(player1Stack))
@@ -168,12 +165,36 @@ function checkWin(){ //invoke every time cards are pushed to a stack
     if (player1Stack === 52) {
         //template literals to use winning players name 
         console.log('p1 wins game!');
-    } else if (player2Stack === 52) {
+        const para = document.createElement("p");
+        const node = document.createTextNode('player 1 wins game!');
+        para.appendChild(node);
+        const element = document.getElementById("div1");
+        element.appendChild(para);
+        element.removeChild(element.childNodes[0]);
+     }
+    else if (player2Stack === 52) {
         console.log('p2 wins game!');
-    } else if (player1Stack !== 52 && player2Stack !== 52 ){
+        const para = document.createElement("p");
+        const node = document.createTextNode('player 2 wins game!');
+        para.appendChild(node);
+        const element = document.getElementById("div1");
+        element.appendChild(para);
+        element.removeChild(element.childNodes[0]);
+    } 
+    else if (player1Stack !== 52 && player2Stack !== 52 ){
         console.log('draw another card');
+        const para = document.createElement("p");
+        const node = document.createTextNode('draw another card');
+        para.appendChild(node);
+        const element = document.getElementById("div1");
+        element.appendChild(para);
+        element.removeChild(element.childNodes[0]);
+        // function stopDiv() {
+        //     document.getElementById("div1").disabled = true;
+      //}
+     }
     }
-}
+
 
 
 function render() {
