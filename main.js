@@ -50,7 +50,7 @@ let resetButton = document.getElementById('resetButton');
 let player2 = document.getElementById('player2');
 
 //event listeners-----------------------------------------------------------------
-startButton.addEventListener("click", playGame);
+startButton.addEventListener("click", startGame);
     
 
 player2.addEventListener("click", pickRandomCard);
@@ -142,15 +142,17 @@ function checkGreaterCard(){
 
 //checkGreaterCard();
 
-// function checkWin(){ //invoke every time cards are pushed to a stack
-//     //how to check the contents of an array?
-//     if (player1Stack === 52 || player2Stack === 52) {
-//         //template literals to use winning players name 
-//         console.log(`${ } + "won! game over"`);
-//     } else if (player1Stack < 52 && player2Stack <52) {
-//         console.log("next round");
-//     }
-// }
+function checkWin(){ //invoke every time cards are pushed to a stack
+    //how to check the contents of an array?
+    if (player1Stack === 52) {
+        //template literals to use winning players name 
+        console.log('p1 wins');
+    } else if (player2Stack === 52) {
+        console.log('p2 wins');
+    } else if (player1Stack && player2Stack !== 52 ){
+        console.log('draw another card');
+    }
+}
 // checkWin();
 
 // function checkWin() {
@@ -173,18 +175,31 @@ location.reload();
 }
 
 //seperate start game function/ disable start listener at end of this
+
+function startGame(){
+    createDeck();
+    splitDeck();
+    player1CurrentCard.push(pickRandomCard(player1Stack));
+    player2CurrentCard.push(pickRandomCard(player2Stack));
+    console.log('player1hand', player1CurrentCard[0][0]);
+    console.log('player2hand', player2CurrentCard[0][0]);
+    checkGreaterCard(player1CurrentCard, player2CurrentCard);
+    //disable start button
+    document.getElementById("startButton").removeEventListener("click", startGame);
+}
 //flipcard invokes play for rest of game  
 
 function playGame(){
-    createDeck();
+    //createDeck();
     //console.log(globalDeck);
-    splitDeck();
+    //splitDeck();
     //these 2 lines take a random card twice and push it from the stack to the currentCard
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
     console.log('player1hand', player1CurrentCard[0][0]);
     console.log('player2hand', player2CurrentCard[0][0]);
     checkGreaterCard(player1CurrentCard, player2CurrentCard);
+    checkWin();
     //generate next turn function/ disable start button event listener at the end of the function. 
 
     //dom announces who won the hand, display goes away when card is clicked again
