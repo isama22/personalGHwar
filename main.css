@@ -74,11 +74,13 @@ height: 35px;
 #div1{
 font-family: Arial, Helvetica, sans-serif;
 color: darkred;
+background-color: lightblue;
 }
 
 #div2 {
 font-family: Arial, Helvetica, sans-serif;
 color: darkred;
+background-color: lightpink;
 
 }
 button {

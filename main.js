@@ -94,7 +94,7 @@ function checkGreaterCard(){
         player2CurrentCard.push(pickRandomCard(player2Stack));
       
         console.log("it's a tie! now it's war, draw new cards!");
-        //checkGreaterCard();
+        
         //append child/dom to display tie message on screen 
 
         // var target = document.querySelector('div1');
@@ -110,14 +110,33 @@ function checkGreaterCard(){
 
             var para = document.createElement("P");                       
             var t = document.createTextNode("it's a tie! now it's war, draw new cards!");    
+            document.getElementById("div1").appendChild(para); 
             para.appendChild(t);    
-
             while (div2.firstChild){
                 div2.removeChild(div2.firstChild);
-            };                                   
-            document.getElementById("div1").appendChild(para); 
+            };
+        document.getElementById("div2").appendChild(para); 
 
+            // while (div2.firstChild){
+            //     div2.removeChild(div2.firstChild);
+            // };    
+            // if (div.firstChild) {
+            //     div1.removeChild(div1.firstChild);
+            // }   else {
+            //     var para = document.createElement("P");                       
+            //     var t = document.createTextNode("it's a tie! now it's war, draw new cards!");   
+            //     document.getElementById("div1").appendChild(para); 
+            //     para.appendChild(t);
+            // }                           
 
+            // var parentDiv = document.getElementById("div2");
+            // var childDiv = document.getElementsByTagName("P");
+
+            // if (parentDiv.contains(childDiv)) {
+            //     console.log("yes");
+            // }
+
+        //checkGreaterCard();
 
             //now make it go away if theres a first child in the div and then have it run checkgreater card.//
     }
@@ -160,9 +179,6 @@ function checkGreaterCard(){
                 div2.removeChild(div2.firstChild);
             };
         document.getElementById("div2").appendChild(para);
-
-
-
 
         // let para = document.createElement("p");
         // const node = document.createTextNode('player 2 wins this hand! draw another card');
