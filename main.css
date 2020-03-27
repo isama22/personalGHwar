@@ -15,7 +15,7 @@ section {
     display: flex;
     flex-direction: column;
     background-color: darkcyan;
-    height: 170vh;
+    height: 190vh;
     
 }
 
@@ -38,7 +38,7 @@ flex-direction: row;
 /* margin-left: 580px;
 margin-bottom: 300px; */
 margin: auto;
-margin-bottom: 300px;
+margin-bottom: 50px;
 
 }
 
@@ -51,33 +51,38 @@ flex-direction: row;
 /* margin-left: 580px;
 margin-bottom: 60px; */
 margin: auto;
-margin-top: 50px;
+/* margin-top: 50px; */
 }
 
 aside{
 font-family: Arial, Helvetica, sans-serif;
+font-weight: 900;
+color: darkred;
 display: flex;
 justify-content: left;
-background-color: aliceblue;
+background-color: cyan;
 width: 90px;
 height: 35px;
+text-decoration: underline;
 }
 #p1aside {
 font-family: Arial, Helvetica, sans-serif;
+font-weight: 100;
 display: flex;
-justify-content: left;
-background-color: aliceblue;
-text-align: left;
+justify-content: center;
+background-color: lime;
+/* text-align: left; */
 width: 90px;
 height: 35px;
 margin-bottom: 35px;
 }
 #p2aside{
 font-family: Arial, Helvetica, sans-serif;
+font-weight: 100;
 display: flex;
-justify-content: left;
-background-color: aliceblue;
-text-align: left;
+justify-content: center;
+background-color: lime;
+/* text-align: left; */
 width: 90px;
 height: 35px;
 }
@@ -85,12 +90,20 @@ height: 35px;
 font-family: Arial, Helvetica, sans-serif;
 color: darkred;
 background-color: lightblue;
+width: 100px;
+display: flex;
+flex-direction: row;
+margin: auto;
 }
 
 #div2 {
 font-family: Arial, Helvetica, sans-serif;
 color: darkred;
 background-color: lightpink;
+width: 100px;
+display: flex;
+flex-direction: row;
+margin: auto;
 
 }
 button {
