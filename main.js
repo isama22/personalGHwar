@@ -39,7 +39,8 @@ function createDeck() {
     var deck = new Array();
     for(var i = 0; i < suits.length; i++) {
         for(var x = 0; x < values.length; x++) {
-            var card = {Value: values[x], Suit: suits[i], img:`assets/images/${suits[i]}-${values[x]}`};
+            var card = {Value: values[x], Suit: suits[i], img:
+                                        `assets/images/${suits[i]}-${values[x]}`};
             // `assets/images/blue.svg`};
             // `assets/images/${suits}-${values}`
             deck.push(card);
@@ -74,12 +75,14 @@ function pickRandomCard(globalDeck) {
 function startGame(){
     createDeck();
     splitDeck();
+
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
-    flipCard();
+    
 
     console.log('player1hand', player1CurrentCard[0][0]);
     console.log('player2hand', player2CurrentCard[0][0]);
+    flipCard();
     checkGreaterCard();
     document.getElementById("startButton").removeEventListener("click", startGame);
 }
@@ -192,6 +195,7 @@ function checkWin(){ //invoke every time cards are pushed to a stack
 function render() {
 //use render to flip cards over 
 //use to initialize game? 
+
 }
 render();
 
@@ -205,8 +209,16 @@ function flipCard(){
 // console.log('player2hand', player2CurrentCard[0][0]);
 
     document.getElementById('player1').setAttribute('src', player1CurrentCard[0][0].img);
-    document.getElementById('player1').setAttribute('src', player1CurrentCard[0][0].img);
+    
+    
+    
+
+    document.getElementById('player2').setAttribute('src', player2CurrentCard[0][0].img);
     // document.getElementById('player1').setAttribute('src', 'assets/images/backs/blue.svg');
+    
+    
+    //this works 
+    // document.getElementById('player1').setAttribute('src', 'assets/images/Clubs/Clubs-2.svg');
 
 // player2CurrentCard.setAttribute('src', player2CurrentCard[0][0].img);
 
@@ -224,6 +236,7 @@ function playGame(){
     player2CurrentCard.push(pickRandomCard(player2Stack));
     console.log("player1hand", player1CurrentCard[0][0]);
     console.log('player2hand', player2CurrentCard[0][0]);
+    flipCard();
     //checkGreaterCard(player1CurrentCard, player2CurrentCard);
     checkGreaterCard();
     checkWin();
