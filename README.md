@@ -11,6 +11,7 @@ I used HTML, CSS, JavaScript, and DOM manipulation to make this game.
 
 Getting Started:
 http://isama22.github.io/personalGHwar/
+<br>
 The card images aren't appearing in the html at the moment, but opening the console will allow you to see which cards are being selected in game play. 
 
 
