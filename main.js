@@ -247,6 +247,25 @@ function render() {
 }
 render();
 
+
+function scoreBoard1(){
+    var para = document.createElement("P");   
+    var p1Stack = document.createTextNode(player1Stack.length);
+    document.getElementById("p1aside").appendChild(para);
+    para.appendChild(p1Stack);
+}
+    // scoreBoard1();
+
+
+function scoreBoard2(){
+    var para = document.createElement("P");   
+    var p2Stack = document.createTextNode(player2Stack.length);
+    document.getElementById("p2aside").appendChild(para);
+    para.appendChild(p2Stack);
+}
+   // scoreBoard2();
+
+
 function flipCard(){ 
 
 //console log whats in my current card, assign a path to whatever that happens to be through set attribute in my flipcard function
