@@ -6,7 +6,7 @@ War is a simple card game that can be played by two or more players. Its objecti
 I used HTML, CSS, JavaScript, and DOM manipulation to make this game. 
 
 ![](https://i.imgur.com/ENEuvpJ.png)
-https://i.imgur.com/MOnNBdl.png
+![](https://i.imgur.com/MOnNBdl.png)
 
 Getting Started:
 http://isama22.github.io/personalGHwar/
