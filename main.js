@@ -11,14 +11,11 @@ let playerTwo = null;
 
 let player1Stack = [];
 let player2Stack = [];
-//console.log(player2Stack);
 let win = player1Stack === 52 || player2Stack === 52;
 
 //variables -----------------------------------------------
 let player1CurrentCard = [];
 let player2CurrentCard = [];
-// console.log('player1CurrentCard');
-
 
 //cached------------------------------------------------------------------------
 let startButton = document.getElementById('startButton');
@@ -40,7 +37,7 @@ function createDeck() {
     for(var i = 0; i < suits.length; i++) {
         for(var x = 0; x < values.length; x++) {
             var card = {Value: values[x], Suit: suits[i], img:
-                                        `assets/images/${suits[i]}-${values[x]}`};
+                                        `assets/images/${suits[i]}-${values[x]}.svg`};
             // `assets/images/blue.svg`};
             // `assets/images/${suits}-${values}`
             deck.push(card);
@@ -70,7 +67,7 @@ function pickRandomCard(globalDeck) {
     render();
     return array;
 }
-//console.log(pickRandomCard(globalDeck));
+
 
 function startGame(){
     createDeck();
@@ -96,63 +93,102 @@ function checkGreaterCard(){
         player1CurrentCard.push(pickRandomCard(player1Stack));
         player2CurrentCard.push(pickRandomCard(player2Stack));
       
-        //splice new random card out of stack and into currentCard twice, once for each player
-        // player1CurrentCard.splice(pickRandomCard(player1Stack))
-        // player2CurrentCard.splice(pickRandomCard(player2Stack))
         console.log("it's a tie! now it's war, draw new cards!");
-        checkGreaterCard();
+        //checkGreaterCard();
         //append child/dom to display tie message on screen 
+
+        // var target = document.querySelector('div1');
+        // var p = document.createElement('p');
+        // p.innerHTML = "it's a tie! now it's war, draw new cards!";
+        // target.parentNode.insertBefore(p, target.nextSibling);
+
+            // var node = document.createElement("P"); 
+            // var textnode =  
+            //     document.createTextNode("it's a tie! now it's war, draw new cards!"); 
+            // node.appendChild(textnode); 
+            // document.getElementById("div2").appendChild(node); 
+
+            var para = document.createElement("P");                       
+            var t = document.createTextNode("it's a tie! now it's war, draw new cards!");    
+            para.appendChild(t);    
+
+            while (div2.firstChild){
+                div2.removeChild(div2.firstChild);
+            };                                   
+            document.getElementById("div1").appendChild(para); 
+
+
+
+            //now make it go away if theres a first child in the div and then have it run checkgreater card.//
     }
     else if (player1CurrentCard[player1CurrentCard.length -1][0].Value > player2CurrentCard[player2CurrentCard.length -1][0].Value) {
-        //pushes both cards into p1 stack
         for (i = 0; i < player1CurrentCard.length; i++){
             player2Stack.splice(player2CurrentCard[i][1], 1);
             player1Stack.push(player2CurrentCard[i][0])
         }
-        console.log('player 1 wins this hand');
-        let para = document.createElement("p");
-        const node = document.createTextNode('player 1 wins this hand! draw another card');
-        para.appendChild(node);
-        const element = document.getElementById("div2");
-        element.appendChild(para);
+            console.log('player 1 wins this hand');
+
+            var para = document.createElement("P");                       
+            var t = document.createTextNode('player 1 wins this hand! draw another card');    
+            para.appendChild(t);                                       
             while (div2.firstChild){
-            div2.removeChild(div2.firstChild);
-        };
-        para(element.appendChild(para));
+                    div2.removeChild(div2.firstChild);
+                };
+            document.getElementById("div2").appendChild(para); 
+
+            // let para = document.createElement("p");
+            // const node = document.createTextNode('player 1 wins this hand! draw another card');
+            // para.appendChild(node);
+            // const element = document.getElementById("div2");
+            // element.appendChild(para);
+            //     while (div2.firstChild){
+            //     div2.removeChild(div2.firstChild);
+            // };
+            // para(element.appendChild(para));
             checkWin();
     } else{
-    //pushes player2Currentcard && player1CurrentCard in player2Stack
     for (i = 0; i < player1CurrentCard.length; i++){
         player1Stack.splice(player1CurrentCard[i][1], 1);
         player2Stack.push(player1CurrentCard[i][0])
     }
         console.log('player 2 wins this hand');
-        let para = document.createElement("p");
-        const node = document.createTextNode('player 2 wins this hand! draw another card');
-        para.appendChild(node);
-        const element = document.getElementById("div2");
-        element.appendChild(para);
-            while (div2.firstChild) {
-            div2.removeChild(div2.firstChild);
-        };
-        para(element.appendChild(para));
+
+        var para = document.createElement("P");                       
+        var t = document.createTextNode('player 2 wins this hand! draw another card');    
+        para.appendChild(t);                                       
+        while (div2.firstChild){
+                div2.removeChild(div2.firstChild);
+            };
+        document.getElementById("div2").appendChild(para);
+
+
+
+
+        // let para = document.createElement("p");
+        // const node = document.createTextNode('player 2 wins this hand! draw another card');
+        // para.appendChild(node);
+        // const element = document.getElementById("div2");
+        // element.appendChild(para);
+        //     while (div2.firstChild) {
+        //     div2.removeChild(div2.firstChild);
+        // };
+        // para(element.appendChild(para));
         //para.appendChild(node);
         checkWin();
-        
-    }
-}
-
+}}
 
 function checkWin(){ //invoke every time cards are pushed to a stack
     //how to check the contents of an array?
     if (player1Stack.length === 52) {
         //template literals to use winning players name 
         console.log('p1 wins game!');
-        const para = document.createElement("p");
-        const node = document.createTextNode('player 1 wins game!');
-        para.appendChild(node);
-        const element = document.getElementById("div1");
-        element.appendChild(para);
+
+
+            const para = document.createElement("p");
+            const node = document.createTextNode('player 1 wins game!');
+            para.appendChild(node);
+            const element = document.getElementById("div1");
+            element.appendChild(para);
         // while (div2.firstChild){
         //     div2.removeChild(div2.firstChild);
         // };
@@ -189,13 +225,9 @@ function checkWin(){ //invoke every time cards are pushed to a stack
         // para.appendChild(node);
         // para(element.appendChild(para));
         // element.removeChild(element.childNodes[0]);
-     }
-    }
+}}
 
 function render() {
-//use render to flip cards over 
-//use to initialize game? 
-
 }
 render();
 
@@ -207,29 +239,24 @@ function flipCard(){
 
 // console.log('player1hand', player1CurrentCard[0][0]);
 // console.log('player2hand', player2CurrentCard[0][0]);
-
-    document.getElementById('player1').setAttribute('src', player1CurrentCard[0][0].img);
-    
-    
     
 
-    document.getElementById('player2').setAttribute('src', player2CurrentCard[0][0].img);
-    // document.getElementById('player1').setAttribute('src', 'assets/images/backs/blue.svg');
+    document.getElementById('player1').setAttribute('src', player1CurrentCard[0][0].svg);
+    
+    //document.getElementById('player1').src = 'player1CurrentCard[0][0].svg';
+
+    document.getElementById('player2').setAttribute('src', player2CurrentCard[0][0].svg);
+    //document.getElementById('player1').setAttribute('src', 'assets/images/backs/blue.svg');
     
     
     //this works 
-    // document.getElementById('player1').setAttribute('src', 'assets/images/Clubs/Clubs-2.svg');
-
-// player2CurrentCard.setAttribute('src', player2CurrentCard[0][0].img);
-
-
+    //document.getElementById('player1').setAttribute('src', 'assets/images/Clubs/Clubs-2.svg');
+    //player2CurrentCard.setAttribute('src', 'assets/images/Clubs/Clubs-2.svg');
 }
 
 function playGame(){
     //createDeck();
-    //console.log(globalDeck);
     //splitDeck();
-    //these 2 lines take a random card twice and push it from the stack to the currentCard
     player1CurrentCard = [];
     player2CurrentCard = [];
     player1CurrentCard.push(pickRandomCard(player1Stack));
@@ -237,7 +264,6 @@ function playGame(){
     console.log("player1hand", player1CurrentCard[0][0]);
     console.log('player2hand', player2CurrentCard[0][0]);
     flipCard();
-    //checkGreaterCard(player1CurrentCard, player2CurrentCard);
     checkGreaterCard();
     checkWin();
 }
