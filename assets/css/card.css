@@ -42,7 +42,8 @@
     border: 0.15em dashed #daa520; }
 
     /* card.dA would be ace of diamonds */
-.card.dA {
+  /* .card.dA  */
+    .card.Diamond-Ace {
   background-image: url("../images/diamonds/diamonds-A.svg"); }
 
 .card.dK {

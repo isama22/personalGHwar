@@ -1,22 +1,19 @@
 body {
-    text-align: center;
-    background-image: url("https://i.imgur.com/BTJdpsn.jpg");
-    /* background-repeat: no-repeat; */
-    background-size: 100%;
-    display: grid;
-    grid-template-columns: 4fr;
-    grid-template-rows: 4fr;
-    height: 100vh;
-    margin: 70px;
-    background-color: red;
-
+text-align: center;
+background-image: url("https://i.imgur.com/BTJdpsn.jpg");
+background-size: 100%;
+display: grid;
+grid-template-columns: 4fr;
+grid-template-rows: 4fr;
+height: 100vh;
+margin: 70px;
+background-color: red;
 }
 section {
-    display: flex;
-    flex-direction: column;
-    background-color: darkcyan;
-    height: 190vh;
-    
+display: flex;
+flex-direction: column;
+background-color: darkcyan;
+height: 190vh;
 }
 
 h1 {
@@ -24,22 +21,15 @@ color: darkred;
 font-family: Arial, Helvetica, sans-serif;
 text-align: center;
 }
-/* trying to have the nested div boxes show up */
-/* section div {
-   background-color: white;
-   
-} */
+
 #player1 {
 background-color: yellow;
 display: flex;
 height: 30vh;
 width: 20vh;
 flex-direction: row;
-/* margin-left: 580px;
-margin-bottom: 300px; */
 margin: auto;
 margin-bottom: 50px;
-
 }
 
 #player2 {
@@ -48,10 +38,7 @@ display: flex;
 height: 30vh;
 width: 20vh;
 flex-direction: row;
-/* margin-left: 580px;
-margin-bottom: 60px; */
 margin: auto;
-/* margin-top: 50px; */
 }
 
 aside{
@@ -65,32 +52,32 @@ width: 90px;
 height: 35px;
 text-decoration: underline;
 }
+
 #p1aside {
 font-family: Arial, Helvetica, sans-serif;
 font-weight: 100;
 display: flex;
 justify-content: center;
 background-color: lime;
-/* text-align: left; */
 width: 90px;
 height: 35px;
 margin-bottom: 35px;
 }
+
 #p2aside{
 font-family: Arial, Helvetica, sans-serif;
 font-weight: 100;
 display: flex;
 justify-content: center;
 background-color: lime;
-/* text-align: left; */
 width: 90px;
 height: 35px;
 }
+
 #div1{
 font-family: Arial, Helvetica, sans-serif;
 color: darkred;
 background-color: lightblue;
-width: 100px;
 display: flex;
 flex-direction: row;
 margin: auto;
@@ -104,8 +91,8 @@ width: 100px;
 display: flex;
 flex-direction: row;
 margin: auto;
-
 }
+
 button {
 color: red;
 display: flex;
