@@ -54,12 +54,21 @@ margin: auto;
 margin-top: 50px;
 }
 
+aside{
+font-family: Arial, Helvetica, sans-serif;
+display: flex;
+justify-content: left;
+background-color: aliceblue;
+width: 90px;
+height: 35px;
+}
 #p1aside {
 font-family: Arial, Helvetica, sans-serif;
 display: flex;
 justify-content: left;
 background-color: aliceblue;
-width: 50px;
+text-align: left;
+width: 90px;
 height: 35px;
 margin-bottom: 35px;
 }
@@ -68,7 +77,8 @@ font-family: Arial, Helvetica, sans-serif;
 display: flex;
 justify-content: left;
 background-color: aliceblue;
-width: 50px;
+text-align: left;
+width: 90px;
 height: 35px;
 }
 #div1{

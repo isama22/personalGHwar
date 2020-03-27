@@ -251,17 +251,30 @@ render();
 function scoreBoard1(){
     var para = document.createElement("P");   
     var p1Stack = document.createTextNode(player1Stack.length);
-    document.getElementById("p1aside").appendChild(para);
     para.appendChild(p1Stack);
+    while (p1aside.firstChild){
+        p1aside.removeChild(p1aside.firstChild);
+    };
+    document.getElementById("p1aside").appendChild(para);
 }
     // scoreBoard1();
+    // var para = document.createElement("P");                       
+    //         var t = document.createTextNode('player 1 wins this hand! draw another card');    
+    //         para.appendChild(t);                                       
+    //         while (div2.firstChild){
+    //                 div2.removeChild(div2.firstChild);
+    //             };
+    //         document.getElementById("div2").appendChild(para); 
 
 
 function scoreBoard2(){
     var para = document.createElement("P");   
     var p2Stack = document.createTextNode(player2Stack.length);
+    para.appendChild(p2Stack); 
+    while (p2aside.firstChild){
+        p2aside.removeChild(p2aside.firstChild);
+    };
     document.getElementById("p2aside").appendChild(para);
-    para.appendChild(p2Stack);
 }
    // scoreBoard2();
 
