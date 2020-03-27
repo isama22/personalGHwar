@@ -115,8 +115,9 @@ function checkGreaterCard(){
             while (div2.firstChild){
                 div2.removeChild(div2.firstChild);
             };
-        document.getElementById("div2").appendChild(para); 
-
+            document.getElementById("div2").appendChild(para); 
+                scoreBoard1();
+                scoreBoard2();
             // while (div2.firstChild){
             //     div2.removeChild(div2.firstChild);
             // };    
@@ -155,6 +156,7 @@ function checkGreaterCard(){
                 };
             document.getElementById("div2").appendChild(para); 
 
+
             // let para = document.createElement("p");
             // const node = document.createTextNode('player 1 wins this hand! draw another card');
             // para.appendChild(node);
@@ -165,6 +167,8 @@ function checkGreaterCard(){
             // };
             // para(element.appendChild(para));
             checkWin();
+            scoreBoard1();
+            scoreBoard2();
     } else{
     for (i = 0; i < player1CurrentCard.length; i++){
         player1Stack.splice(player1CurrentCard[i][1], 1);
@@ -191,6 +195,8 @@ function checkGreaterCard(){
         // para(element.appendChild(para));
         //para.appendChild(node);
         checkWin();
+        scoreBoard1();
+        scoreBoard2();
 }}
 
 function checkWin(){ //invoke every time cards are pushed to a stack
@@ -198,13 +204,12 @@ function checkWin(){ //invoke every time cards are pushed to a stack
     if (player1Stack.length === 52) {
         //template literals to use winning players name 
         console.log('p1 wins game!');
-
-
-            const para = document.createElement("p");
+            const para = document.createElement("P");
             const node = document.createTextNode('player 1 wins game!');
             para.appendChild(node);
             const element = document.getElementById("div1");
             element.appendChild(para);
+
         // while (div2.firstChild){
         //     div2.removeChild(div2.firstChild);
         // };
@@ -215,11 +220,12 @@ function checkWin(){ //invoke every time cards are pushed to a stack
      }
     else if (player2Stack.length === 52) {
         console.log('p2 wins game!');
-        const para = document.createElement("p");
+        const para = document.createElement("P");
         const node = document.createTextNode('player 2 wins game!');
         para.appendChild(node);
         const element = document.getElementById("div1");
         element.appendChild(para);
+
         // while (div2.firstChild){
         //     div2.removeChild(div2.firstChild);
         //     div2.forEach(element.appendChild(para));
@@ -257,16 +263,6 @@ function scoreBoard1(){
     };
     document.getElementById("p1aside").appendChild(para);
 }
-    // scoreBoard1();
-    // var para = document.createElement("P");                       
-    //         var t = document.createTextNode('player 1 wins this hand! draw another card');    
-    //         para.appendChild(t);                                       
-    //         while (div2.firstChild){
-    //                 div2.removeChild(div2.firstChild);
-    //             };
-    //         document.getElementById("div2").appendChild(para); 
-
-
 function scoreBoard2(){
     var para = document.createElement("P");   
     var p2Stack = document.createTextNode(player2Stack.length);
@@ -276,8 +272,6 @@ function scoreBoard2(){
     };
     document.getElementById("p2aside").appendChild(para);
 }
-   // scoreBoard2();
-
 
 function flipCard(){ 
 
