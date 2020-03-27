@@ -24,13 +24,12 @@ let player2CurrentCard = [];
 let startButton = document.getElementById('startButton');
 let resetButton = document.getElementById('resetButton');
 let player2 = document.getElementById('player2');
+let player1 = document.getElementById('player1');
 
 //event listeners-----------------------------------------------------------------
 startButton.addEventListener("click", startGame);
-    
 
 player2.addEventListener("click", playGame);
-    
 
 resetButton.addEventListener("click", reset);
 
@@ -40,7 +39,9 @@ function createDeck() {
     var deck = new Array();
     for(var i = 0; i < suits.length; i++) {
         for(var x = 0; x < values.length; x++) {
-            var card = {Value: values[x], Suit: suits[i]};
+            var card = {Value: values[x], Suit: suits[i], img:`assets/images/${suits[i]}-${values[x]}`};
+            // `assets/images/blue.svg`};
+            // `assets/images/${suits}-${values}`
             deck.push(card);
         }
     }
@@ -75,12 +76,11 @@ function startGame(){
     splitDeck();
     player1CurrentCard.push(pickRandomCard(player1Stack));
     player2CurrentCard.push(pickRandomCard(player2Stack));
-    
+    flipCard();
+
     console.log('player1hand', player1CurrentCard[0][0]);
     console.log('player2hand', player2CurrentCard[0][0]);
-    //checkGreaterCard(player1CurrentCard, player2CurrentCard);
     checkGreaterCard();
-    //disable start button
     document.getElementById("startButton").removeEventListener("click", startGame);
 }
 
@@ -98,7 +98,7 @@ function checkGreaterCard(){
         // player2CurrentCard.splice(pickRandomCard(player2Stack))
         console.log("it's a tie! now it's war, draw new cards!");
         checkGreaterCard();
-        
+        //append child/dom to display tie message on screen 
     }
     else if (player1CurrentCard[player1CurrentCard.length -1][0].Value > player2CurrentCard[player2CurrentCard.length -1][0].Value) {
         //pushes both cards into p1 stack
@@ -107,7 +107,7 @@ function checkGreaterCard(){
             player1Stack.push(player2CurrentCard[i][0])
         }
         console.log('player 1 wins this hand');
-        const para = document.createElement("p");
+        let para = document.createElement("p");
         const node = document.createTextNode('player 1 wins this hand! draw another card');
         para.appendChild(node);
         const element = document.getElementById("div2");
@@ -124,7 +124,7 @@ function checkGreaterCard(){
         player2Stack.push(player1CurrentCard[i][0])
     }
         console.log('player 2 wins this hand');
-        const para = document.createElement("p");
+        let para = document.createElement("p");
         const node = document.createTextNode('player 2 wins this hand! draw another card');
         para.appendChild(node);
         const element = document.getElementById("div2");
@@ -196,8 +196,21 @@ function render() {
 render();
 
 function flipCard(){ 
-    //pickRandomCard will use flipcard to pull the correlated card image? from my css
-//flipcard invokes play for rest of game?
+
+//console log whats in my current card, assign a path to whatever that happens to be through set attribute in my flipcard function
+
+//invoke flipcard at every instance of a random card being selected
+
+// console.log('player1hand', player1CurrentCard[0][0]);
+// console.log('player2hand', player2CurrentCard[0][0]);
+
+    document.getElementById('player1').setAttribute('src', player1CurrentCard[0][0].img);
+    document.getElementById('player1').setAttribute('src', player1CurrentCard[0][0].img);
+    // document.getElementById('player1').setAttribute('src', 'assets/images/backs/blue.svg');
+
+// player2CurrentCard.setAttribute('src', player2CurrentCard[0][0].img);
+
+
 }
 
 function playGame(){
